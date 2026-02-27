@@ -1,0 +1,62 @@
+<style>
+    :root {
+        --primary: #ff4757;
+        --primary-light: #ff6b81;
+        --dark: #1e272e;
+        --gray: #2f3542;
+        --light: #f1f2f6;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, #ff4757, #ff6b81);
+        --shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+    body { background: var(--light); color: var(--dark); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    
+    header {
+        background: rgba(30, 39, 46, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        padding: 12px 0;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .logo { font-size: 1.8rem; font-weight: 900; color: #fff; letter-spacing: 2px; cursor: pointer; }
+    .logo span { color: var(--primary); }
+
+    .nav-links { display: flex; gap: 25px; }
+    .nav-links a { color: #fff; font-weight: 500; transition: 0.3s; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-icons { display: flex; gap: 20px; align-items: center; }
+    .header-icons i { color: #fff; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+    .header-icons i:hover { color: var(--primary); }
+
+    .cart-icon { position: relative; }
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0        }
+
+    ..7rem;

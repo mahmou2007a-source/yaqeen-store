@@ -1,0 +1,165 @@
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                    url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1920');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero h1 { font-size: 4rem; color: #fff; margin-bottom: 10px; }
+    .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: #ccc; font-size: 1.3rem; margin-bottom: 25px; }
+
+    .btn {
+        padding: 14px 35px;
+        background: var(--gradient);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6); }
+
+    .products { padding: 80px 5%; max-width: 1400px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
+    .section-title::after {
+        content: ''; display: block; width: 60px; height: 4px; background: var(--gradient);
+        margin: 10px auto 0; border-radius: 2px;
+    }
+
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; }
+
+    .product-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: 0.4s;
+    }
+    .product-card:hover { transform: translateY(-10px); }
+
+    .product-img { width: 100%; height: 280px; object-fit: cover; }
+
+    .product-info { padding: 20px; }
+    .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    
+    .product-colors { display: flex; gap: 8px; margin-bottom: 10px; }
+    .color-dot {
+        width: 25px; height: 25px; border-radius: 50%; cursor: pointer;
+        border: 2px solid transparent; transition: 0.3s;
+    }
+    .color-dot.active { border-color: var(--dark); transform: scale(1.2); }
+
+    .product-price { color: var(--primary); font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
+
+    .add-cart-btn {
+        width: 100%; padding: 12px; background: var(--dark); color: #fff;
+        border: none; border-radius: 10px; cursor: pointer; font-weight: bold;
+        transition: 0.3s;
+    }
+    .add-cart-btn:hover { background: var(--gradient); }
+
+    .auth-page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1e272e 0%, #2f3542 100%);
+        padding: 20px;
+        padding-top: 80px;
+    }
+
+    .auth-box {
+        background: var(--white);
+        padding: 40px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: var(--shadow);
+    }
+
+    .auth-box h2 { text-align: center; margin-bottom: 30px; color: var(--dark); }
+    .auth-box h2 span { color: var(--primary); }
+
+    .input-group { margin-bottom: 20px; }
+    .input-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+    .input-group input {
+        width: 100%; padding: 14px; border: 2px solid #eee;
+        border-radius: 10px; font-size: 1rem; transition: 0.3s;
+    }
+    .input-group input:focus { border-color: var(--primary); outline: none; }
+
+    .auth-box .btn { width: 100%; margin-bottom: 15px; }
+    .auth-switch { text-align: center; }
+    .auth-switch a { color: var(--primary); font-weight: bold; }
+
+    .cart-page { padding: 120px 5% 60px; max-width: 1200px; margin: 0 auto; }
+    .cart-page h1 { margin-bottom: 30px; }
+
+    .cart-items { display: grid; gap: 20px; }
+
+    .cart-item {
+        display: flex; align-items: center; gap: 20px;
+        background: var(--white); padding: 20px; border-radius: 15px;
+        box-shadow: var(--shadow);
+    }
+
+    .cart-item-img { width: 100px; height: 100px; object-fit: cover; border-radius: 10px; }
+    .cart-item-details { flex: 1; }
+    .cart-item-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+    .cart-item-color { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+    .cart-item-price { color: var(--primary); font-weight: 900; font-size: 1.2rem; }
+
+    .quantity-controls { display: flex; align-items: center; gap: 10px; }
+    .qty-btn {
+        width: 30px; height: 30px; background: var(--dark); color: #fff;
+        border: none; border-radius: 5px; cursor: pointer;
+    }
+
+    .remove-btn { color: #ff4757; cursor: pointer; font-size: 1.2rem; background: none; border: none; }
+
+    .cart-total {
+        background: var(--white); padding: 25px; border-radius: 15px;
+        margin-top: 30px; text-align: center; box-shadow: var(--shadow);
+    }
+    .cart-total h3 { font-size: 1.5rem; margin-bottom: 15px; }
+    .cart-total .total-price { color: var(--primary); font-size: 2rem; font-weight: 900; }
+
+    .empty-cart { text-align: center; padding: 60px; }
+    .empty-cart i { font-size: 5rem; color: #ccc; margin-bottom: 20px; }
+
+    footer { background: var(--dark); color: #fff; text-align: center; padding: 30px; margin-top: 50px; }
+    .social-icons a {
+        display: inline-block; width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+        border-radius: 50%; line-height: 40px; margin: 0 5px; transition: 0.3s;
+    }
+    .social-icons a:hover { background: var(--primary); transform: translateY(-3px); }
+
+    @media (max-width: 768px) {
+        .hero h1 { font-size: 2.2rem; }
+        .nav-links { display: none; }
+        .cart-item { flex-direction: column; text-align: center; }
+    }
+
+    .toast {
+        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+        background: var(--dark); color: #fff; padding: 15px 30px;
+        border-radius: 30px; font-weight: bold; z-index: 9999;
+        animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from { transform: translateX(-50%) translateY(50px); opacity: 0; } 
+                        to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+</style>

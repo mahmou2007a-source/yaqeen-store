@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يقين - YaQeen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- الألوان الأساسية --- */
+        :root {
+            --primary-color: #ff4757;
+            --secondary-color: #2f3542;
+            --dark-color: #1e272e;
+            --light-color: #f1f2f6;
+            --gradient: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- الهيدر --- */
+        header {
+            background: rgba(30, 39, 46, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .logo span { 
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 30px; 
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .cart-icon:hover { color: var(--primary-color); transform: scale(1.1); }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gradient);
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* --- قسم الهيرو --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1920');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: var(--gradient);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Tajawal', sans-serif;
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
+        }
+
+        /* --- قسم المنتجات --- */
+        .products {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--dark-color);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add-cart-btn:hover {
+            background: var(--gradient);
+            transform: scale(1.02);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* --- الفوتر --- */
+        footer {
+            background: var(--dark-color);
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            line-height: 45px;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* --- للموبايل --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .product-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">يـقـيـن <span>YAQEEN</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#products">المتجات</a></li>
+                <li><a href="#about">العروض</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>خلك <span>أنيق</span> مع يقين</h1>
+            <p>أحدث التشكيات . أجود الخامات . سعر خاص لكل الشباب</p>
+            <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                تسوق الآن
+            </button>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات -->
+    <section class="products" id="products">
+        <h2 class="section-title">أحدث arrivals 🆕</h2>
+        <div class="product-grid">
+            
+            <!-- منتج 1 -->
+            <div class="product-card">
+                <span class="badge">جديد</span>
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500" alt="Hoodie 1" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">هوديز أسود basic</h3>
+                    <span class="product-price">349 ج.م</span>
+                    <button class="add-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> إضافة للسلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1578681994506-b8f463449011?w=500" alt="Hoodie 2" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">هوديز كحلي winter</h3>
+                    <span class="product-price">399 ج.م</span>
+                    <button class="add-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> إضافة للسلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 3 -->
+            <div class="product-card">
+                <span class="badge">خصم 20%</span>
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="Hoodie 3" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">هوديز رمادي zip</h3>
+                    <span class="product-price">279 ج.م</span>
+                    <button class="add-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> إضافة للسلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500" alt="Hoodie 4" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">هوديز oversized</h3>
+                    <span class="product-price">420 ج.م</span>
+                    <button class="add-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> إضافة للسلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 5 -->
+            <div class="product-card">
+                <span class="badge">أفضل مبيع</span>
+                <img src="https://images.unsplash.com/photo-1551028919-ac66c5f8013d?w=500" alt="Hoodie 5" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">هوديز بطباعة</h3>
+                    <span class="product-price">380 ج.م</span>
+                    <button class="add-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> إضافة للسلة
+                    </button>
+                </div>
+            </div>
+
+            <!-- منتج 6 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=500" alt="Hoodie 6" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">هوديز full zip</h3>
+                    <span class="product-price">450 ج.م</span>
+                    <button class="add-cart-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> إضافة للسلة
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer id="contact">
+        <h2 class="logo">يـقـيـن <span>YAQEEN</span></h2>
+        <p style="margin-top: 10px; color: #888;">جميع الحقوق محفوظة © 2024</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-snapchat"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        let count = 0;
+        const cartCountElement = document.getElementById('cart-count');
+
+        function addToCart() {
+            count++;
+            cartCountElement.innerText = count;
+            
+            // Animation
+            cartCountElement.style.transform = 'scale(1.3)';
+            setTimeout(function() {
+                cartCountElement.style.transform = 'scale(1)';
+            }, 150);
+
+            // Toast notification
+            showToast("✅ تم إضافة المنتج للسلة!");
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #ff4757, #ff6b81);
+                color: white;
+                padding: 15px 30px;
+                border-radius: 30px;
+                font-weight: bold;
+                z-index: 9999;
+                animation: fadeInUp 0.3s ease;
+                box-shadow: 0 10px 30px rgba(255,71,87,0.4);
+            `;
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(20px)';
+                setTimeout(function() {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
